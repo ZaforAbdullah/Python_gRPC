@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message Book {
+    string name = 1;
+    string author = 2;
+    int32 price = 3;
+}
+
+message BookSearch {
+    string name = 1;
+}
+
+service BookStore {
+    rpc first(BookSearch) returns (Book);
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service BookStore {
+    // Unary RPC method for blocking client call
+    rpc first (BookSearch) returns (Book);
+
+    // Server streaming RPC method for non-blocking client call
+    rpc searchByAuthor (BookSearch) returns (stream Book);
+}
+
+message Book {
+    string name = 1;
+    string author = 2;
+    int32 price = 3;
+}
+
+message BookSearch {
+    string name = 1;
+    string author = 2;
+}

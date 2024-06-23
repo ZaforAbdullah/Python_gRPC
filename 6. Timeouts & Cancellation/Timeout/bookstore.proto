@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service BookStore {
+    // Unary RPC for searching a book by title
+    rpc first(BookSearch) returns (Book);
+
+    // Client streaming RPC for calculating total cart value
+    rpc totalCartValue(stream Book) returns (Cart);
+}
+
+// Message representing a book
+message Book {
+    string name = 1;
+    string author = 2;
+    int32 price = 3;
+}
+
+// Message representing a book search query
+message BookSearch {
+    string name = 1;
+}
+
+// Message representing a cart summary
+message Cart {
+    int32 price = 1;
+    int32 books = 2;
+}
